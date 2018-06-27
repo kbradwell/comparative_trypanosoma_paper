@@ -9,8 +9,8 @@ Description: Script for calculating percent identity from aligned nucleotide or 
 
 Usage: `python get_perc_id_general.py fastafile`
 
-Input
+Input  
 - fastafile alignment in fasta format
 
-Output
+Output  
 - percent identity
