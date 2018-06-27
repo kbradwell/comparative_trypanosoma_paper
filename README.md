@@ -4,13 +4,13 @@ Custom scripts for recreating some of the analyses from the trypanosoma genomic 
 [1. Genome Completion Pipeline](#1.-genome-completion-pipeline)  
 [2. Genome Annotation Pipeline](#2.-genome-annotation-pipeline)  
 [3. Edit Alignments for Phylogeny](#3.-edit-alignments-for-phylogeny)  
-[Percent Identity Calculation](#percent-identity-calculation)  
+[4. Percent Identity Calculation](#percent-identity-calculation)  
 
 ## 1. Genome Completion Pipeline ##
 ## 2. Genome Annotation Pipeline ##
 ## 3. Edit Alignments for Phylogeny ##
 
-## [Percent Identity Calculation]
+## 4. Percent Identity Calculation
 
 Script name: get_perc_id_general.py
 
