@@ -4,7 +4,12 @@ Custom scripts for recreating some of the analyses from the trypanosoma genomic 
 [1. Genome Completion Pipeline](#1-genome-completion-pipeline)  
 [2. Genome Annotation Pipeline](#2-genome-annotation-pipeline)  
 [3. Edit Alignments for Phylogeny](#3-edit-alignments-for-phylogeny)  
-[4. Percent Identity Calculation](#4-percent-identity-calculation)  
+[4. Percent Identity Calculation](#4-percent-identity-calculation) 
+[5. Gene Cluster Analysis](#5-gene-cluster-analysis)  
+[6. Copy Number Estimation](#6-copy-number-estimation)  
+[7. Parse Pseudogene Predictions](#7-parse-pseudogene-predictions)  
+[8. Heterozygosity Pipeline](#8-heterozygosity-pipeline)  
+[9. Metabolism Gene Length Coverage](#9-metabolism-gene-length-coverage)  
 
 ## 1. Genome Completion Pipeline
 ## 2. Genome Annotation Pipeline
@@ -56,5 +61,51 @@ Input
 
 Output  
 - percent identity
+
+## 5. Gene Cluster Analysis
+
+Script name: 
+
+Description: Generates stats for a venn diagram of shared gene clusters across the organisms.
+
+Usage: ``
+
+Input  
+- 
+
+Output  
+- 
+
+Script name: 
+
+Description: Determines the percent surface or secreted proteins for each gene cluster size within each organism.
+
+Usage: ``
+
+Input  
+- 
+
+Output  
+- 
+
+## 6. Copy Number Estimation
+
+## 7. Parse Pseudogene Predictions
+
+## 8. Heterozygosity Pipeline
+
+## 9. Metabolism Gene Length Coverage
+
+Script name: 
+
+Description: 
+
+Usage: `python blast2cov.py`
+
+Input  
+- 
+
+Output  
+- 
 
 
