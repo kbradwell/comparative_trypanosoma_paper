@@ -12,9 +12,23 @@ Custom scripts for recreating some of the analyses from the trypanosoma genomic 
 [9. Metabolism Gene Length Coverage](#9-metabolism-gene-length-coverage)  
 
 ## 1. Genome Completion Pipeline
+
+### gce_tcruzi.sh
+
+Description: Pipeline for genome completion evaluation. We designate this tool 'Genome assembly Completion and Integrity Analyzer' (GenoCIA), as it estimates assembly completion and gene calling integrity. This tool performs two tasks: (i) randomly selects 2, 4, 6, 8, 10, 20, 30, 40, 50, 60, 70, 80, 90 and 99% of the reads and performs assemblies using Newbler with these read subsets; and (ii) uses tBLASTn to determine the presence of a curated set of 2,217 kinetoplastid orthologous single copy genes at 25, 50, 75, 90 and 99% alignment lengths (merging reference gene alignment lengths over multiple contigs or genes where necessary). 
+
+Usage: `gce_tcruzi <path to assembly fasta folder> <organism short name>`
+
+Input  
+- path to assembly fasta folder
+- organism short name
+
+Output  
+- estimates of assembly completion and gene calling integrity
+
 ## 2. Genome Annotation Pipeline
 
-Script name: gap.pl
+### gap.pl
 
 Description: Pipeline for genome annotation.
 
@@ -35,9 +49,9 @@ Results for the following options are available:
 --rnammer        find RNAs using rnammer-1.2  
 --asgard         perform metabolic reconstruction using ASGARD  
 
-Script name: get_best_annotated_hit.py (separate but complementary script to the Genome Annotation Pipeline)
+### get_best_annotated_hit.py
 
-Description: Searches a database of the best annotation available.
+Description: This is a separate but complementary script to the Genome Annotation Pipeline. It searches a database of the best annotation available.
 
 Usage: `python get_best_annotated_hit.py <nr_blastp_results> <outfile> > <logfile>`
 
@@ -50,7 +64,7 @@ Output
 ## 3. Edit Alignments for Phylogeny
 ## 4. Percent Identity Calculation
 
-Script name: get_perc_id_general.py
+### get_perc_id_general.py
 
 Description: Script for calculating percent identity from aligned nucleotide or amino acid sequences.
 
@@ -64,7 +78,7 @@ Output
 
 ## 5. Gene Cluster Analysis
 
-Script name: 
+### gen_orthofinder_stats_automated.pl
 
 Description: Generates stats for a venn diagram of shared gene clusters across the organisms.
 
@@ -76,7 +90,7 @@ Input
 Output  
 - Stats file containing cluster counts for each intersection or species specific group.
 
-Script name: 
+### groups2binnedcounts_orthofinder_perc_surface_prots_threshold.py
 
 Description: Determines the frequency of various gene cluster sizes, and the percent surface or secreted proteins for each gene cluster size, within each organism.
 
@@ -97,7 +111,7 @@ Output
 
 ## 9. Metabolism Gene Length Coverage
 
-Script name: 
+### blast2cov.py
 
 Description: 
 
