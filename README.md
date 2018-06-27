@@ -113,14 +113,14 @@ Output
 
 ### blast2cov.py
 
-Description: 
+Description: This script was used post-ASGARD analysis to further check whether some genes initially marked as absent were likely to be present. The script indicates whether genes are covered by a threshold level of sequencing reads across their entire length: provides one type of evidence for genomic presence of a gene.
 
-Usage: `python blast2cov.py`
+Usage: `python blast2cov.py <tBLASTn results file> <outfile>`
 
 Input  
-- BLAST results
+- tBLASTn results for genes of interest vs. reads
 
 Output  
-- List of genes that are legitimately "FOUND" based on the reads and the given criteria.
+- List of genes that are legitimately "FOUND" based on the reads and the given criteria (currently set to genes where at least 4 BLAST-aligned reads cover over 60% of the gene length).
 
 
