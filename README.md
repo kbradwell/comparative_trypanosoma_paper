@@ -71,10 +71,10 @@ Description: Generates stats for a venn diagram of shared gene clusters across t
 Usage: `perl gen_orthofinder_stats_automated.pl`
 
 Input  
-- 
+- OrthologousGroups.txt (output from OrthoFinder)
 
 Output  
-- 
+- Stats file containing cluster counts for each intersection or species specific group.
 
 Script name: 
 
@@ -83,10 +83,11 @@ Description: Determines the frequency of various gene cluster sizes, and the per
 Usage: `python groups2binnedcounts_orthofinder_perc_surface_prots_threshold.py`
 
 Input  
-- 
+- OrthologousGroups.txt (output from OrthoFinder)
+- List of genes containing a positive prediction from TMHMM, KOHGPI or SignalP
 
 Output  
-- 
+- Stats .txt file
 
 ## 6. Copy Number Estimation
 
@@ -103,9 +104,9 @@ Description:
 Usage: `python blast2cov.py`
 
 Input  
-- 
+- BLAST results
 
 Output  
-- 
+- List of genes that are legitimately "FOUND" based on the reads and the given criteria.
 
 
