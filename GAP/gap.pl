@@ -1,8 +1,5 @@
 #!/usr/bin/perl
 #Developer: Vishal Koparde, Ph.D.
-#Created: 120709
-#Modified:120709
-#Version 1.0
 
 use strict;
 use warnings;
