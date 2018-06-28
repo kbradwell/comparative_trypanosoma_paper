@@ -1,0 +1,99 @@
+#!/home/vnkoparde/opt/Python-2.7.2/bin/python
+# -*- coding: iso-8859-15 -*-
+import MySeq
+import HTSeq
+import sys,argparse
+
+#~ Version 1.0 
+#~ Version 2.0 -nohits option is added
+
+parser=argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,description=
+"""This script filters blast -m8 output. 
+
+Author: Vishal N Kopardé, Ph. D. 
+Created: 120110 
+Modified: 120120
+Version: 2.0""",
+ version="2.0")
+parser.add_argument('-i',help='blast results file',dest='infile',required=True,metavar="<blast results file>")
+parser.add_argument('-o',help='filtered blast results file',dest='outfile',required=False,metavar="<filtered blast results file>")
+parser.add_argument('-pra',help='filter by percent of read or query aligned',dest='pra',required=False,type=float,metavar="<example: 50>")
+parser.add_argument('-fasta',help='filter by percent of read aligned requires fasta file with all blast queries',dest='fasta',required=False,metavar="<.fasta file>")
+parser.add_argument('-evalue',help='filter by evalue',dest='evalue',required=False,type=float,metavar="<example: 1e-10>")
+parser.add_argument('-pi', help='filter by percent identity', dest='pi',required=False,type=float,metavar="<example: 97.5>")
+parser.add_argument('-al', help='filter by alignment length', dest='al',required=False,type=int,metavar="<example: 50>")
+parser.add_argument('-gionly',help='report only gi numbers', dest='gionly',action='store_true',required=False)
+parser.add_argument('-subject_id_only',help='report only subject_ids (use if no gis available)', dest='subject_id_only',action='store_true',required=False)
+parser.add_argument('-nohits',help='output nohits as fasta file', dest='nohits',required=False,metavar="<nohits fasta filename>")
+args=vars(parser.parse_args())
+
+if (not args["pra"]) and (not args["evalue"]) and (not args["pi"]) and (not args["al"]) and (not args["gionly"]) and (not args["subject_id_only"]) and (not args["nohits"]):
+	print "Nothing to do!"
+	sys.exit()
+
+if args["gionly"] and args["subject_id_only"]:
+	print "gionly and subject_id_only cannot be used together"
+	sys.exit
+
+if args["pra"] and (not args["fasta"]):
+	print "filter by percent of read aligned requires fasta file with all blast queries. For complete usage try -h"
+	sys.exit()
+
+if args["nohits"] and (not args["fasta"]):
+	print "fasta file is required to report nohits. For complete usage try -h"
+	sys.exit()
+
+if args["fasta"] and ( args["pra"] or args["nohits"] ):
+	sequences = dict( (s.name, s) for s in HTSeq.FastaReader(args["fasta"]) )
+	all_query_ids = sequences.keys()
+
+hit_query_ids = []	
+fh=open(args["infile"])
+if args["outfile"]:
+	outstream=open(args["outfile"],'w')
+else:
+	outstream=sys.stdout
+
+blast_records=MySeq.Blastm8_parse(fh)
+fh.close()
+
+for rec in blast_records:
+	if args["pra"]:
+		read_len=len(sequences[rec.query_id])
+		pra=100.0*3*(int(rec.alignment_length)-int(rec.gaps))/read_len
+		# multiply by 3 as subject is aa and query is nuc
+		if pra<args["pra"]:
+			#print read_len,rec.alignment_length,pra,rec.mismatches,rec.gaps,rec.query_start,rec.query_end,rec.subject_start,rec.subject_end
+			continue
+	if args["pi"]:
+		if float(rec.perc_identity)<args["pi"]:
+			continue
+	if args["al"]:
+		if int(rec.alignment_length)<args["al"]:
+			continue
+	if args["evalue"]:
+		#~ print rec.evalue,args["evalue"],float(rec.evalue)>args["evalue"]
+		if float(rec.evalue)>args["evalue"]:
+			continue
+	if args["gionly"]:
+		rec.print_gi(outstream)
+		continue
+	if args["subject_id_only"]:
+		rec.print_subject_id(outstream)
+		continue
+	rec.print_record(outstream)
+	hit_query_ids.append(rec.query_id)
+	
+if args["outfile"]:
+	outstream.close()
+
+if args["nohits"]:
+	outstream=open(args["nohits"],'w')
+	for read_id in all_query_ids:
+		if read_id in hit_query_ids:
+			continue
+		sequences[read_id].write_to_fasta_file(outstream)
+	outstream.close()
+	
+sys.exit()
+	

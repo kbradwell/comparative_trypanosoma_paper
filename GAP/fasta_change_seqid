@@ -1,0 +1,61 @@
+#!/home/vnkoparde/opt/Python-2.7.2/bin/python
+import HTSeq
+import sys,os,argparse
+
+#~ Version 1.0
+# Version 2.0
+# Version 3.0 writes out seqid lookup file old to new
+
+parser=argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,description=
+"""This script enumerates the seqids of a fasta file.
+
+Author: Vishal N Koparde, Ph. D. 
+Created: 120710
+Modified: 120724
+Version: 3.0""",
+ version="3.0")
+parser.add_argument('-i',help='input fasta file',dest='infile',required=True,metavar="<in.fasta>")
+parser.add_argument('-o',help='output fasta file',dest='outfile',required=True,metavar="<out.fasta>")
+parser.add_argument('-a',help='append current seqid to new description',dest='a',action='store_true',required=False)
+parser.add_argument('-l',help='append length to seqid',dest='l',action='store_true',required=False)
+parser.add_argument('-p',help='seqid prefix',dest='p',required=True,metavar="<TCO> for TCO_0001,TCO_0002,etc.")
+parser.add_argument('-d',help='remove the description in seqid',dest='d',required=False,action='store_true')
+args=vars(parser.parse_args())
+
+if (not os.path.exists(args['infile'])):
+    print args['infile']+" file not found!"
+    sys.exit()
+    
+if (not args['p']):
+    print "Prefix is required!"
+    sys.exit()
+
+outfile=open(args['outfile'],'w')
+lookupfile=open(args['infile']+".seqid.lookup",'w')
+ctr=0
+for s in HTSeq.FastaReader(args['infile']):
+    ctr+=1
+    newname="%s_%05d"%(args['p'],ctr)
+    newdescr=s.descr
+    if args['a']:
+        if len(newdescr)==0:
+            newdescr="%s"%(s.name)
+        else:
+            newdescr="%s|%s"%(s.name,newdescr)
+    if args['l']:
+        if len(newdescr)==0:
+            newdescr="length=%d"%(len(s))
+        else:
+            if newdescr[-1]=="|":
+                newdescr+="length=%d"%(len(s))
+            else:
+                newdescr+="|length=%d"%(len(s))
+    lookupfile.write("%s\t%s\n"%(s.name,newname))
+    s.name=newname
+    s.descr=newdescr
+    if args['d']:
+        s.descr=""
+    s.write_to_fasta_file(outfile)
+outfile.close()
+lookupfile.close()
+sys.exit()
