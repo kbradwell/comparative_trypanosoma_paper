@@ -62,6 +62,19 @@ Output
 - Best hits for each gene
 
 ## 3. Edit Alignments for Phylogeny
+
+### get_shorts.py
+
+Description: Get a list of alignments that should be excluded based on containing sequences <25% of the median sequence length in the alignment.
+
+Usage: `for f in *.gblocks.fasta.infoalign; do perl get_shorts.pl $f >> exclusion_list_difflengths;done`
+
+Input
+- infoalign output files containing sequence lengths in the alignments
+
+Output
+- List of alignments to be exluded from the percent identity and phylogeny analyses
+
 ## 4. Percent Identity Calculation
 
 ### get_perc_id_general.py
