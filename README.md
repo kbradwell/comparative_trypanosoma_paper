@@ -122,6 +122,8 @@ Output
 
 ## 8. Heterozygosity Pipeline
 
+### freebayes_vcftools_ht_pipeline.sh
+
 ## 9. Metabolism Gene Length Coverage
 
 ### blast2cov.py
