@@ -29,7 +29,7 @@ gzip -f *.bp
 gzip -f *.blast
 rm -f gce_tcruzi.txt
 for f in `ls *.blast.gz`;do
-if [ ! -f ${f}.duplication ]; then perl /home/vnkoparde/scripts/gce_duplication.pl <(zcat $f) > ${f}.duplication; fi
+if [ ! -f ${f}.duplication ]; then perl gce_duplication.pl <(zcat $f) > ${f}.duplication; fi
 cat ${f}.duplication|awk '{print $2}'|sort|uniq -c|sort -k2n > ${f}.duplication.summary
 done
 
