@@ -75,7 +75,7 @@ sub processFile {
 
     if( ! -f $stat_file) { 
 	print "Generating Stat file ..\n" if $debug;
-	`perl /home/nsheth/scripts/calculateSequenceSize.pl $file > $stat_file`;
+	`perl calculateSequenceSize.pl $file > $stat_file`;
     }
     
     if(! -f $blastout) { 
@@ -90,14 +90,14 @@ sub processFile {
     } 
     
     if(-f $blastout && ! -f $bpout) { 
-	`perl /home/nsheth/Util/use/useParse.pl $blastout `;
+	`perl useParse.pl $blastout `;
     }
 
     
     if(-f $bpout) { 
 	print "Generating Blast Stat File ...\n" if $debug;
 	#`perl /data2/tol/scripts/GenomeCompletionByReferenceList/analyzeBlastResults.pl $bpout > $blast_statfile `;
-	`perl /home/vnkoparde/scripts/analyzeBlastResults.v2.pl $bpout > $blast_statfile `;
+	`perl analyzeBlastResults.v2.pl $bpout > $blast_statfile `;
     }
     
     
