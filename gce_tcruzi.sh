@@ -24,8 +24,7 @@ if [ ! -f $f ]; then continue; fi
 g=`echo $f|awk -F "/" '{print $2}'`
 ln -s $f ${g%.*}_all.fasta
 done
-#perl /data2/tol/scripts/GenomeCompletionByReferenceList/GenomeCompletionEvalution_without_qsub.pl $project /data2/tol/scripts/GenomeCompletionByReferenceList/genelist_files/TcruziCL_ESM_proteins.fa tblastn `pwd`
-perl /usr/global/blp/bin/GenomeCompletionEvalution_without_qsub.pl $project /gpfs_fs/data2/tol/scripts/GenomeCompletionByReferenceList/genelist_files/TcruziCL_ESM_proteins.fa tblastn `pwd`
+perl GenomeCompletionEvalution_without_qsub.pl $project TcruziCL_ESM_proteins.fa tblastn `pwd`
 gzip -f *.bp
 gzip -f *.blast
 rm -f gce_tcruzi.txt
