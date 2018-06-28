@@ -49,11 +49,11 @@ Results for the following options are available:
 --rnammer        find RNAs using rnammer-1.2  
 --asgard         perform metabolic reconstruction using ASGARD  
 
-### get_best_annotated_hit.py
+### get_best_annotated_hit_v2.py
 
 Description: This is a separate but complementary script to the Genome Annotation Pipeline. It searches a database of the best annotation available.
 
-Usage: `python get_best_annotated_hit.py <nr_blastp_results> <outfile> > <logfile>`
+Usage: `python get_best_annotated_hit_v2.py <nr_blastp_results> <outfile> > <logfile>`
 
 Input  
 - nr BLASTp results
