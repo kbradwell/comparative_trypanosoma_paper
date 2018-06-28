@@ -15,7 +15,7 @@ if [ ! -f $f ]; then continue; fi
 g=`echo $f|awk -F "/" '{print $2}'`
 ln -s $f ${g%.*}_all.fasta
 done
-perl GenomeCompletionEvalution_without_qsub_blastp.pl $project /gpfs_fs/data2/tol/scripts/GenomeCompletionByReferenceList/genelist_files/TcruziCL_ESM_proteins.fa blastp `pwd`
+perl GenomeCompletionEvalution_without_qsub_blastp.pl $project TcruziCL_ESM_proteins.fa blastp `pwd`
 gzip *.bp
 gzip *.blast
 rm -f gce_tcruzi_blastp.txt
