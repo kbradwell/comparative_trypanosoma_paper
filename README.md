@@ -103,15 +103,16 @@ Input
 Output  
 - Stats file containing cluster counts for each intersection or species specific group.
 
-### groups2binnedcounts_orthofinder_perc_surface_prots_threshold.py
+### groups2binnedcounts.py
 
 Description: Determines the frequency of various gene cluster sizes, and the percent surface or secreted proteins for each gene cluster size, within each organism.
 
-Usage: `python groups2binnedcounts_orthofinder_perc_surface_prots_threshold.py`
+Usage: `python groups2binnedcounts.py <groups> <gene list> <threshold>`
 
 Input  
-- OrthologousGroups.txt (output from OrthoFinder)
-- List of genes containing a positive prediction from TMHMM, KOHGPI or SignalP
+- groups: OrthologousGroups.txt (output from OrthoFinder)
+- gene list: List of genes containing a positive prediction from TMHMM, KOHGPI or SignalP
+- threshold: threshold for number of genes in each cluster that must have a positive prediction from TMHMM, KOHGPI or SignalP for the cluster to be designated as a "surface" or "secreted" protein cluster. For the paper this was kept at 1.
 
 Output  
 - Stats .txt file
