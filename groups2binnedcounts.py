@@ -12,7 +12,9 @@ import string
 from sys import argv
 import re
 
-script, filename, lookup = argv
+script, filename, lookup, threshold = argv
+
+geneThreshold = int(threshold)
 
 groupstxt = open(filename)
 lines = groupstxt.readlines()
@@ -74,16 +76,16 @@ for line in lines:
 			speciesDict[o][ocount]["numClusters"]=1
 			if o in surfaceFlag:
 				#print (float(surfaceFlag[o])/float(clustercount)*100)
-				if (float(surfaceFlag[o])/float(clustercount)*100)>10:
+				if (float(surfaceFlag[o])/float(clustercount)*100)>geneThreshold: # can change this threshold
 					speciesDict[o][ocount]["numSurfaceProtClusters"]=1
 		else:
 			speciesDict[o][ocount]["numClusters"]+=1
 			if o in surfaceFlag:
-				if (float(surfaceFlag[o])/float(clustercount)*100)>10:
+				if (float(surfaceFlag[o])/float(clustercount)*100)>geneThreshold: # can change this threshold
 					if "numSurfaceProtClusters" not in speciesDict[o][ocount]:
 						speciesDict[o][ocount]["numSurfaceProtClusters"]=1
 					else:
-						if (float(surfaceFlag[o])/float(clustercount)*100)>10:
+						if (float(surfaceFlag[o])/float(clustercount)*100)>geneThreshold: # can change this threshold
 							speciesDict[o][ocount]["numSurfaceProtClusters"]+=1
 	
 
