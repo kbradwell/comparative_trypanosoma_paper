@@ -98,7 +98,7 @@ Description: Generates stats for a venn diagram of shared gene clusters across t
 Usage: `perl gen_orthofinder_stats_automated.pl`
 
 Input  
-- OrthologousGroups.txt (output from OrthoFinder)
+- OrthologousGroups.txt (output from OrthoFinder) - make sure this is in the same directory as where you're running the script from.
 
 Output  
 - Stats file containing cluster counts for each intersection or species specific group.
