@@ -121,6 +121,10 @@ Output
 
 ## 7. Parse Pseudogene Predictions
 
+### get_initial_pseudogene.py
+
+Usage: `script, mafInfile, blasttabInfile, outGFF`
+
 ## 8. Heterozygosity Pipeline
 
 ### freebayes_vcftools_ht_pipeline.sh
