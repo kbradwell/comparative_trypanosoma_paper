@@ -121,9 +121,19 @@ Output
 
 ## 7. Parse Pseudogene Predictions
 
-### get_initial_pseudogene.py
+### get_initial_pseudo_gff_chunks.py
 
-Usage: `script, mafInfile, blasttabInfile, outGFF`
+Description: Takes maf and blastab format files from LAST search and makes a gff of potential pseudogenes (without filtering for
+called gene overlaps yet). Takes a specific number of contigs at a time for parallel processing.
+
+Usage: `get_initial_pseudo_gff_chunks.py <mafInfile> <blasttabInfile> <outGFF>`
+
+Input
+- mafInfile: MAF file from LAST search
+- blasttabInfile: BLASTTAB file from LAST search
+
+Output
+- GFF file of predicted pseudogenes
 
 ## 8. Heterozygosity Pipeline
 
