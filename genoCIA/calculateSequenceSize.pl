@@ -1,7 +1,7 @@
 
 #! /usr/bin/perl -W
 
-use BioUtil::Seq;
+use FastaReader;
 use strict;
 
 
