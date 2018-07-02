@@ -115,7 +115,7 @@ Usage: `python groups2binnedcounts.py <groups> <gene list> <threshold>`
 Input  
 - groups: OrthologousGroups.txt (output from OrthoFinder)
 - gene list: List of genes containing a positive prediction from TMHMM, KOHGPI or SignalP
-- threshold: threshold for number of genes in each cluster that must have a positive prediction from TMHMM, KOHGPI or SignalP for the cluster to be designated as a "surface" or "secreted" protein cluster. For the paper this was kept at 1.
+- threshold: > X percent genes in each cluster must have a positive prediction from TMHMM, KOHGPI or SignalP for the cluster to be designated as a "surface" or "secreted" protein cluster. For the paper X was kept at 0, i.e. > 0% genes in cluster (at least one gene).
 
 Output  
 - Stats .txt file
