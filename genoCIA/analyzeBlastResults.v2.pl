@@ -1,7 +1,6 @@
 # Purpose : Analyze Blast results to count how many genes/query have atleast one hit and how many have full alignment.
 
 use strict;
-use lib("/gpfs_fs/data2/tol/scripts/GenomeCompletionByReferenceList/");
 use FastaReader;
 
 my $bpfile = shift;
