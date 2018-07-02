@@ -26,7 +26,7 @@ Input
 Output  
 - estimates of assembly completion and gene calling integrity
 
-Reference files are available upon request, or replace TcruziCL_ESM_proteins.fa in the scripts with a fasta file of orthologs of your choosing.
+The PATH to reference files (e.g. TcruziCL_ESM_proteins.fa used in this paper, or a fasta file of orthologs of your choosing) should be specified in the scripts.
 
 ## 2. Genome Annotation Pipeline
 
