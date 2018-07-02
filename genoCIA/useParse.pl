@@ -1,6 +1,5 @@
-use lib("/home/nsheth/");
 
-use Util::parseBlast;
+use parseBlast;
 use Symbol;
 
 my $dir = shift;
