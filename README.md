@@ -131,7 +131,7 @@ Description: Takes a table of gene descriptions based on get_best_annotated_hit.
 Usage: `supp_tbl2mgf_gffs.py <genes table>`
 
 Input
-- genes table, making sure the following data is in this column order
+- genes table, making sure the following data is in this column order  
 gene name = col 1  
 contig = col 2  
 start = col 3  
