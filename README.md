@@ -20,8 +20,8 @@ Description: Pipeline for genome completion evaluation. We designate this tool '
 Usage: `gce_tcruzi <path to assembly fasta folder> <organism short name>`
 
 Input  
-- path to assembly fasta folder
-- organism short name
+- path to assembly fasta folder (a folder just containing the assembly fasta file(s))
+- organism short name (any short name you'd like to assign - this will appear in the output file names)
 
 Output  
 - estimates of assembly completion and gene calling integrity
