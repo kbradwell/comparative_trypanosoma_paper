@@ -1,5 +1,8 @@
 #! /home/vnkoparde/opt/Python-2.7.2/bin/python
 
+# Author: Katie Bradwell
+# named get_best_annotated_hit_v2.py on author's server
+
 import sys
 from sys import argv
 import string
@@ -76,9 +79,6 @@ for g in top10hits:
 		except:
 			continue
 
-#print "gene 1:", bestHitDesc["Tra_15.4_gene_00001"]
-#print "gene 43:", bestHitDesc["Tra_15.4_gene_00043"]
-#print "gene 44:", bestHitDesc["Tra_15.4_gene_00044"]
 
 # format the output into a tab delimited file that can be used as input to create the new supp table for all genes
 
