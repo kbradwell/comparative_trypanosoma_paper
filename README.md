@@ -126,44 +126,50 @@ Scripts within the copy_numbers folder have to be run in the following order:
 
 ### 1. supp_tbl2mgf_gffs.py
 
-Description: Takes a table of gene descriptions based on get_best_annotated_hit.py.
+Description: Takes a table of gene descriptions based on get_best_annotated_hit.py and produces GFF files for each multigene family.
 
-Usage: `get_initial_pseudo_gff_chunks.py <mafInfile> <blasttabInfile> <outGFF>`
+Usage: `supp_tbl2mgf_gffs.py <genes table>`
 
 Input
-- mafInfile: MAF file from LAST search
-- blasttabInfile: BLASTTAB file from LAST search
+- genes table, making sure the following data is in this column order
+gene name = col 1
+contig = col 2
+start = col 3
+end = col 4
+strand = col 6
+Evalue of database hit = col 12
+Database annotation = col 14
 
 Output
-- GFF file of predicted pseudogenes
+- GFF file of multigene families
 
 ### 2. alleles_and_coverage.pl
 
-Description: Takes maf and blastab format files from LAST search and makes a gff of potential pseudogenes (without filtering for
-called gene overlaps yet). Takes a specific number of contigs at a time for parallel processing.
+Description: This is a script renamed from a previous heterozygosity method script (not used in this paper) called heterozygosity.pl, developed by Dr. Vishal Koparde. It outputs a "GFF+" file, within which the coverage column in the output is used in the next script, gffplus2copynum.py. Make sure a bam file called reads2assembly.bam, and the corresponding .bai index file, are present in the directory where you're running the script.
 
-Usage: `get_initial_pseudo_gff_chunks.py <mafInfile> <blasttabInfile> <outGFF>`
+Usage: `alleles_and_coverage.pl --assembly <genome assembly> --gff <multigenefamily gff file> --readset <emptyreads.fasta>`
 
 Input
-- mafInfile: MAF file from LAST search
-- blasttabInfile: BLASTTAB file from LAST search
+- reads2assembly.bam and reads2assembly.bam.bai
+- genome assembly fasta file
+- GFF file for multigene family of interest
+- emptyreads.fasta: just an empty file (content isn't needed for the purposes of this method), can do `touch emptyreads.fasta` 
 
 Output
-- GFF file of predicted pseudogenes
+- GFF+ file containing a coverage column
 
 ### 3. gffplus2copynum.py
 
-Description: Takes maf and blastab format files from LAST search and makes a gff of potential pseudogenes (without filtering for
-called gene overlaps yet). Takes a specific number of contigs at a time for parallel processing.
+Description: Takes the GFF+ file and calculates copy number. Correction of this copy number for fraction of gene length covered (full gene lengths in Supplementary Table of paper) was done in Excel.
 
-Usage: `get_initial_pseudo_gff_chunks.py <mafInfile> <blasttabInfile> <outGFF>`
+Usage: `gffplus2copynum.py <GFF+ file> <SCO average coverage>`
 
 Input
-- mafInfile: MAF file from LAST search
-- blasttabInfile: BLASTTAB file from LAST search
+- GFF+ file
+- SCO average coverage: single copy ortholog gene average coverage for the organism
 
 Output
-- GFF file of predicted pseudogenes
+- coverage and average gene length found of the genes in the multigene family of interest
 
 ## 7. Parse Pseudogene Predictions
 
@@ -185,16 +191,20 @@ Output
 
 ### freebayes_vcftools_ht_pipeline.sh
 
-Description: 
+Description: Estimates heterozygosity (number of heterozygous sites per gene) for all genes in an input GFF file.
 
-Usage: ``
+Usage: `freebayes_vcftools_ht_pipeline.sh <gff prefix> <assembly fasta>`
 
 Input
-- 
-- 
+- reads mapped to the assembly labelled as reads2assembly.bam, and corresponding index reads2assembly.bam.bai
+- GFF prefix (name of GFF files without '.gff')
+- assembly fasta: genome assembly fasta file
 
 Output
-- 
+- VCF
+- SNP-only VCF
+- bi- tri- and tetra- allele counts files
+- SNP counts per gene
 
 ## 9. Metabolism Gene Length Coverage
 
