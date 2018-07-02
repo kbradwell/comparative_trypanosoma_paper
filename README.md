@@ -58,7 +58,8 @@ Description: This is a separate but complementary script to the Genome Annotatio
 Usage: `python get_best_annotated_hit_v2.py <nr_blastp_results> <outfile> > <logfile>`
 
 Input  
-- nr BLASTp results
+- nr BLASTp results sorted by E-value, with BLAST run as follows (multi-threading is optional)
+`/PATH-TO-BLASTP/blastp -query <genes.faa> -db </PATH-TO-NR-DB/nr> -out <outfile> -evalue 1e-5 -num_threads 8 -outfmt "6 qseqid sseqid pident length mismatch gaps qstart qend sstart send evalue bitscore slen"`
 
 Output  
 - Best hits for each gene
