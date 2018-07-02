@@ -1,7 +1,7 @@
 #! /usr/bin/python
 
 '''
-Script makes the MGF GFF files that are required for input to estimate copy num via the Aguero method.
+Script makes the MGF GFF files that are required for input to estimate copy num.
 Input: 
 <sp.>_genes_supp_tbl - a file that contains the general genes annotation table for a species
 Output: 
