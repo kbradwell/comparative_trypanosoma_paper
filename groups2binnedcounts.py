@@ -3,6 +3,8 @@
 '''
 Input: 
 OrthologousGroups.txt
+Lookup file - list of all genes with a TMHMM, KOHGPI or SignalP hit
+Threshold - percent of genes in each cluster that must have a hit in the lookup file
 Output: 
 frequencies of binned number of genes in clusters e.g. for species X how many clusters and what percentage of clusters
 contain 1 gene, 2 genes, 3 genes ... >10 genes, as well as percentage surface protein estimates for each cluster size bin
