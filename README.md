@@ -49,7 +49,7 @@ Results for the following options are available:
 --rnammer        find RNAs using rnammer-1.2  
 --asgard         perform metabolic reconstruction using ASGARD  
 
-### get_best_annotated_hit_v2.py
+### get_best_annotated_hit.py
 
 Description: This is a separate but complementary script to the Genome Annotation Pipeline. It searches a database of the best annotation available.
 
@@ -119,6 +119,52 @@ Output
 
 ## 6. Copy Number Estimation
 
+Scripts within the copy_numbers folder have to be run in the following order:
+1. supp_tbl2mgf_gffs.py
+2. alleles_and_coverage.pl
+3. gffplus2copynum.py
+
+### 1. supp_tbl2mgf_gffs.py
+
+Description: Takes a table of gene descriptions based on get_best_annotated_hit.py.
+
+Usage: `get_initial_pseudo_gff_chunks.py <mafInfile> <blasttabInfile> <outGFF>`
+
+Input
+- mafInfile: MAF file from LAST search
+- blasttabInfile: BLASTTAB file from LAST search
+
+Output
+- GFF file of predicted pseudogenes
+
+### 2. alleles_and_coverage.pl
+
+Description: Takes maf and blastab format files from LAST search and makes a gff of potential pseudogenes (without filtering for
+called gene overlaps yet). Takes a specific number of contigs at a time for parallel processing.
+
+Usage: `get_initial_pseudo_gff_chunks.py <mafInfile> <blasttabInfile> <outGFF>`
+
+Input
+- mafInfile: MAF file from LAST search
+- blasttabInfile: BLASTTAB file from LAST search
+
+Output
+- GFF file of predicted pseudogenes
+
+### 3. gffplus2copynum.py
+
+Description: Takes maf and blastab format files from LAST search and makes a gff of potential pseudogenes (without filtering for
+called gene overlaps yet). Takes a specific number of contigs at a time for parallel processing.
+
+Usage: `get_initial_pseudo_gff_chunks.py <mafInfile> <blasttabInfile> <outGFF>`
+
+Input
+- mafInfile: MAF file from LAST search
+- blasttabInfile: BLASTTAB file from LAST search
+
+Output
+- GFF file of predicted pseudogenes
+
 ## 7. Parse Pseudogene Predictions
 
 ### get_initial_pseudo_gff_chunks.py
@@ -138,6 +184,17 @@ Output
 ## 8. Heterozygosity Pipeline
 
 ### freebayes_vcftools_ht_pipeline.sh
+
+Description: 
+
+Usage: ``
+
+Input
+- 
+- 
+
+Output
+- 
 
 ## 9. Metabolism Gene Length Coverage
 
