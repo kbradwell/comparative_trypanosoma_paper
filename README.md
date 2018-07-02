@@ -132,12 +132,12 @@ Usage: `supp_tbl2mgf_gffs.py <genes table>`
 
 Input
 - genes table, making sure the following data is in this column order
-gene name = col 1
-contig = col 2
-start = col 3
-end = col 4
-strand = col 6
-Evalue of database hit = col 12
+gene name = col 1  
+contig = col 2  
+start = col 3  
+end = col 4  
+strand = col 6  
+Evalue of database hit = col 12  
 Database annotation = col 14
 
 Output
