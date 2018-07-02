@@ -1,8 +1,7 @@
 
 #! /usr/bin/perl -W
 
-use lib("/home/nsheth/scripts");
-use FastaReader;
+use BioUtil::Seq;
 use strict;
 
 
