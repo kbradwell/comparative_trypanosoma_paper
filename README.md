@@ -197,7 +197,7 @@ Usage: `freebayes_vcftools_ht_pipeline.sh <gff prefix> <assembly fasta>`
 
 Input
 - reads mapped to the assembly labelled as reads2assembly.bam, and corresponding index reads2assembly.bam.bai
-- GFF prefix (name of GFF files without '.gff')
+- GFF prefix (name of GFF file without '.gff')
 - assembly fasta: genome assembly fasta file
 
 Output
