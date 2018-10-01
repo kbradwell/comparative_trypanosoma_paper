@@ -1,5 +1,6 @@
 # comparative_trypanosoma_paper
 Custom scripts for recreating some of the analyses from the trypanosoma genomic comparisons work.
+DOI: 10.5281/zenodo.1442351
 
 [1. Genome Completion Pipeline](#1-genome-completion-pipeline)  
 [2. Genome Annotation Pipeline](#2-genome-annotation-pipeline)  
